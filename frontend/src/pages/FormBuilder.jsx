@@ -19,9 +19,9 @@ export default function FormBuilder() {
     const [activeQuestion, setActiveQuestion] = useState(null)
     const handleSubmitForm = async () => {
         try {
-            const res = await axios.post('http://localhost:5000/api/forms', form)
+            const res = await axios.post('https://bustbrain.onrender.com/api/forms', form)
             const formId = res.data._id
-            const formLink = `http://localhost:3000/forms/${formId}`
+            const formLink = `${window.location.origin}/forms/${formId}`
             alert(`✅ Form submitted!\nView your form at:\n${formLink}`)
             window.open(formLink, '_blank')
         } catch (error) {
