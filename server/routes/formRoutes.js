@@ -2,7 +2,20 @@ import express from 'express'
 import Form from '../models/Form.js'
 
 const router = express.Router()
-
+router.get('/all',async (req, res) => {
+    try {
+        const forms = await Form.find({createdAt:{$gt:11}})
+        if (!forms) {
+            return res.status(404).json(
+            {
+                error : 'Server error'
+            })
+        }
+        res.status(201).json(forms)
+    } catch (err){
+        res.status(500)
+    }
+})
 router.post('/', async (req, res) => {
     try {
         const newForm = new Form(req.body)

@@ -31,7 +31,6 @@ export default function FormBuilder() {
     }
 
 
-    // Add a new question
     const addQuestion = () => {
         const newQuestion = {
             id: generateId(),
@@ -52,7 +51,7 @@ export default function FormBuilder() {
     }
 
 
-    // Update a specific question
+
     const updateQuestion = (questionId, newData) => {
         setForm({
             ...form,
@@ -62,7 +61,7 @@ export default function FormBuilder() {
         })
     }
 
-    // Remove a question
+
     const removeQuestion = (questionId) => {
         setForm({
             ...form,
@@ -70,13 +69,13 @@ export default function FormBuilder() {
         })
     }
 
-    // Handle drag start for questions
+
     const handleQuestionsDragStart = (event) => {
         const { active } = event
         setActiveQuestion(form.questions.find(q => q.id === active.id))
     }
 
-    // Handle drag end for questions
+
     const handleQuestionsDragEnd = (event) => {
         const {active, over} = event
         if (!over || active.id === over.id) return
@@ -92,13 +91,13 @@ export default function FormBuilder() {
         setActiveQuestion(null)
     }
 
-    // Handle drag cancel
     const handleDragCancel = () => {
         setActiveQuestion(null)
     }
 
     return (
         <div className="max-w-4xl mx-auto p-4">
+            <h1 className="text-center">Form Builder</h1>
             <div className="mb-6">
                 <input
                     type="text"
